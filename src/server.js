@@ -1,8 +1,7 @@
 const http = require('http');
-const htmlHandler = require('./htmlResponse.js');
-const textHandler = require('./textResponse.js');
-const jsonHandler = require('./jsonResponse.js');
-const url = require('url'); 
+const htmlHandler = require('./htmlResponse');
+const textHandler = require('./textResponse');
+const jsonHandler = require('./jsonResponse');
 
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
@@ -35,13 +34,6 @@ const onRequest = (request, response) => {
       htmlHandler.getIndex(request, response);
       break;
   }
-};
-
-//handle GET requests
-const handleGet = (request, response, parsedUrl) => {
-  //route to correct method based on url
-  if (parsedUrl.pathname === '/style.css') {
-    htmlHandler.getCSS(request, response);
 };
 
 http.createServer(onRequest).listen(port);
