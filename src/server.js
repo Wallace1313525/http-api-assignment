@@ -35,17 +35,7 @@ const onRequest = (request, response) => {
       htmlHandler.getIndex(request, response);
       break;
   }
-    
-const parsedUrl = url.parse(request.url);
 
-  //check if method was POST, otherwise assume GET 
-  //for the sake of this example
-  if (request.method === 'POST') {
-
-  } else {
-    handleGet(request, response, parsedUrl);
-  }
-};
 
 //handle GET requests
 const handleGet = (request, response, parsedUrl) => {
