@@ -35,11 +35,12 @@ const onRequest = (request, response) => {
       htmlHandler.getIndex(request, response);
       break;
   }
-
+};
 
 //handle GET requests
 const handleGet = (request, response, parsedUrl) => {
   //route to correct method based on url
+  if (parsedUrl.pathname === '/style.css') {
     htmlHandler.getCSS(request, response);
 };
 
