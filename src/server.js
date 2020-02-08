@@ -36,6 +36,14 @@ const onRequest = (request, response) => {
   }
 };
 
+//handle GET requests
+const handleGet = (request, response, parsedUrl) => {
+  //route to correct method based on url
+  if (parsedUrl.pathname === '/style.css') {
+    htmlHandler.getCSS(request, response);
+  }
+};
+
 http.createServer(onRequest).listen(port);
 
 console.log(`Listening on 127.0.0.1: ${port}`);

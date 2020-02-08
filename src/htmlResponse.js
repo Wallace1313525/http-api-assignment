@@ -15,5 +15,15 @@ const getPage2 = (request, response) => {
   response.end();
 };
 
-module.exports.getIndex = getIndex;
-module.exports.getPage2 = getPage2;
+const getCSS = (request, response) => {
+  response.writeHead(200, { 'Content-Type': 'text/css' });
+  response.write(css);
+  response.end();
+};
+
+
+module.exports = {
+  getIndex,
+  getPage2, 
+  getCSS
+};
