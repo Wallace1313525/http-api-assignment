@@ -58,9 +58,11 @@ const handleResponse = (xhr) => {
       //send our ajax request to the server
       xhr.send();
     };
-    
-    
- function buttonClick(){
+ };
+
+
+
+function buttonClick(){
       
       //functions to call sendAjax for us with the correct parameters
     let optionValue = document.querySelector("#page").value;
@@ -85,7 +87,7 @@ const handleResponse = (xhr) => {
     else if(optionValue == "/notFound"){
         const notFound = () => sendAjax('/notFoundURL');   
     }
-    }
+     
   </script>
     
     
