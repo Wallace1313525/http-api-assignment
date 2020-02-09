@@ -14,26 +14,29 @@ const urlStruct = {
   '/': htmlHandler.getIndex,
   '/success': jsonHandler.success,
   '/badRequest': jsonHandler.badRequest,
+  '/unauthorized' : jsonHandler.unauthorized,
+  '/forbidden' : jsonHandler.foribidden,
+  '/internal' : jsonHandler.internal,
+  '/notImplemented' : jsonHandler.notImplemented,   
   notFound: jsonHandler.notFound,
+
 };
 
-// handle HTTP requests. In node the HTTP server will automatically
-// send this function request and pre-filled response objects.
 const onRequest = (request, response) => {
   // parse the url using the url module
   // This will let us grab any section of the URL by name
   const parsedUrl = url.parse(request.url);
 
-  // grab the query parameters (?key=value&key2=value2&etc=etc)
-  // and parse them into a reusable object by field name
-  const params = query.parse(parsedUrl.query);
+  // grab the 'accept' headers (comma delimited) and split them into an array
+  const acceptedTypes = request.headers.accept.split(',');
 
   // check if the path name (the /name part of the url) matches
   // any in our url object. If so call that function. If not, default to index.
   if (urlStruct[parsedUrl.pathname]) {
-    urlStruct[parsedUrl.pathname](request, response, params);
+    urlStruct[parsedUrl.pathname](request, response, acceptedTypes);
   } else {
-    urlStruct.notFound(request, response, params);
+    // otherwise send them to the index (normally this would be the 404 page)
+    urlStruct.index(request, response, acceptedTypes);
   }
 };
 
@@ -41,4 +44,3 @@ const onRequest = (request, response) => {
 http.createServer(onRequest).listen(port);
 
 console.log(`Listening on 127.0.0.1: ${port}`);
-© 2020 GitHub, Inc.
