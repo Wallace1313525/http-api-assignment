@@ -67,25 +67,25 @@ function buttonClick(){
       //functions to call sendAjax for us with the correct parameters
     let optionValue = document.querySelector("#page").value;
     if(optionValue == "/success"){
-        const success = () => sendAjax('/success'); 
+        sendAjax('/success'); 
     }
     else if(optionValue == "/badRequest"){
-        const badRequest = () => sendAjax('/badRequest'); 
+        sendAjax('/badRequest'); 
     }
     else if(optionValue == "/unauthorized"){
-        const unauthorized = () => sendAjax('/unauthorized');
+        sendAjax('/unauthorized');
     }
     else if(optionValue == "/forbidden"){
-        const foribidden = () => sendAjax('/foribidden');
+        sendAjax('/foribidden');
     }
     else if(optionValue == "/internal"){
-        const internal = () => sendAjax('/internal');  
+        sendAjax('/internal');  
     }
     else if(optionValue == "/notImplemented"){
-        const notImplemented = () => sendAjax('/notImplemented');
+        sendAjax('/notImplemented');
     }
     else if(optionValue == "/notFound"){
-        const notFound = () => sendAjax('/notFoundURL');   
+        sendAjax('/notFoundURL');   
     }
 }
   </script>
